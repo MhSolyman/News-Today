@@ -29,10 +29,16 @@ const newsCategory=(category_id)=>{
     fetch(`https://openapi.programming-hero.com/api/news/category/${category_id}`)
 
         .then(res => res.json())
-        .then(data => console.log(data));
+        .then(data => news(data.data));
 
 }
+let news=(data)=>{
+    for(const c of data){
+        console.log(c)
+    }
 
+
+}
 
 
 
