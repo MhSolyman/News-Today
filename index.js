@@ -2,7 +2,8 @@ const AllNewsCategory = () =>{
     fetch(`https://openapi.programming-hero.com/api/news/categories`)
 
         .then(res => res.json())
-        .then(data => a(data.data.news_category));
+        .then(data => a(data.data.news_category))
+        .catch('error');
         
 }
 AllNewsCategory()
@@ -55,7 +56,7 @@ let news=(data)=>{
        ${c.author.name ?c.author.name:'No data available '}
     </a> <span><i class="fa-regular fa-eye"></i> ${c.total_view?c.total_view:'No data available'}</span>
     <div>
-    <button type="button" onclick="newsAllSee('${c._id}')" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal">Primary</button>
+    <button type="button" onclick="newsAllSee('${c._id}')" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal">Details</button>
     </div>
   </div>
 </nav>
