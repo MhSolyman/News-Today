@@ -3,6 +3,7 @@ const AllNewsCategory = () =>{
 
         .then(res => res.json())
         .then(data => a(data.data.news_category));
+        
 }
 AllNewsCategory()
 
@@ -53,22 +54,44 @@ let news=(data)=>{
       <img src="${c.author.img}" alt="" width="30" height="24" class="d-inline-block align-text-top">
        ${c.author.name ?c.author.name:'No data available '}
     </a> <span><i class="fa-regular fa-eye"></i> ${c.total_view?c.total_view:'No data available'}</span>
-    <div><button type="button" class="btn btn-primary">Primary</button></div>
+    <div>
+    <button type="button" onclick="newsAllSee('${c._id}')" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal">Primary</button>
+    </div>
   </div>
 </nav>
 </div>
 
   </div>
 </div>`;
- card.appendChild(dli)
-
-        
-       
+ card.appendChild(dli)  
     }
 
 
 }
 
+const newsAllSee=(news_id)=>{
+    fetch(` https://openapi.programming-hero.com/api/news/${news_id}`)
 
+        .then(res => res.json())
+        .then(data => showData(data.data));
+
+};
+const showData=(data)=>{
+  
+for(const c of data){
+    document.getElementById("img").src =`${c.image_url}` ;
+    document.getElementById('card-title').innerText=c.title;
+    document.getElementById('p').innerText=c.details;
+    let imgTwo=document.getElementById('imgTwo');
+    imgTwo.src=`${c.author.img}`;
+    let authorName=document.getElementById('authorName')
+    authorName.innerText=`${c.author.name ?c.author.name:'No data available '}`
+document.getElementById('i').innerText=`${c.total_view ?c.total_view:'No data available'}`
+  
+   
+  
+console.log(c)
+}
+}
 
 
