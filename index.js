@@ -37,14 +37,15 @@ let news=(data)=>{
     let card=document.getElementById("card");
     card.innerText='';
     for(const c of data){
+        let details= c.details.slice(0,400);
         console.log(c)
         let dli=document.createElement('div');
         dli.classList.add('col-12')
     dli.innerHTML=`<div class="row border bg-light d-flex align-items-center "><img class="col-lg-6 col-md-6  col-sm-12 "
     src="${c.image_url}" alt="">
   <div class="col-lg-6 col-md-6  col-sm-12" >
-    <h1><b>'${c.title}'</b></h1>
-    <p>${c.details}</p>
+    <h3><b>'${c.title}'</b></h3>
+    <p>${details}</p>
 
 
   </div>
