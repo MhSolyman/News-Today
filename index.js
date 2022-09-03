@@ -35,14 +35,15 @@ const newsCategory=(category_id)=>{
 let news=(data)=>{
   
   data.sort((a, b)=>{return b.total_view - a.total_view});
+  let card=document.getElementById("card");
+  card.innerText='';
   
     if(data==''){
        
         document.getElementById('data-find').innerText='No data found';
         document.getElementById('none').classList.add('d-none');
     }else{count=0
-      let card=document.getElementById("card");
-      card.innerText='';
+
       data.forEach((c)=>{
         let details= c.details.slice(0,400);
           
