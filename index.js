@@ -17,7 +17,7 @@ for(const data of dataAll)
     li.classList.add('nav-item')
     li.innerHTML=`
     
-    <a onclick="newsCategory('${data.category_id}')" class="nav-link" href="#">${data.category_name}</a>
+    <a onclick="newsCategory('${data.category_id}')" class="nav-link mx-4" href="#">${data.category_name}</a>
   `
  ul.appendChild(li)
     
@@ -32,13 +32,17 @@ const newsCategory=(category_id)=>{
     fetch(`https://openapi.programming-hero.com/api/news/category/${category_id}`)
 
         .then(res => res.json())
-        .then(data => news(data.data));
+        .then(data => news(data.data))
+        .catch('error');
+        document.getElementById('none').classList.remove('d-none')
 
 }
 let news=(data)=>{
+    
     if(data==''){
         console.log('no data')
-        document.getElementById('data-find').innerText='No data found'
+        document.getElementById('data-find').innerText='No data found';
+        document.getElementById('none').classList.add('d-none')
     }
     count=0
     let card=document.getElementById("card");
@@ -74,7 +78,8 @@ let news=(data)=>{
  countOne= countOne+1; 
  document.getElementById('data-find').innerText=`${count}  items found for category Entertainmen`
 ;
-console.log(countOne)
+console.log(countOne);
+document.getElementById('none').classList.add('d-none')
     }
    
 
@@ -84,7 +89,8 @@ const newsAllSee=(news_id)=>{
     fetch(` https://openapi.programming-hero.com/api/news/${news_id}`)
 
         .then(res => res.json())
-        .then(data => showData(data.data));
+        .then(data => showData(data.data))
+        .catch('error');
 
 };
 const showData=(data)=>{
