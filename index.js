@@ -45,8 +45,18 @@ let news=(data)=>{
     src="${c.image_url}" alt="">
   <div class="col-lg-6 col-md-6  col-sm-12" >
     <h3><b>'${c.title}'</b></h3>
-    <p>${details}</p>
-
+    <p>${details}...</p>
+<div>
+<nav class="navbar bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" >
+      <img src="${c.author.img}" alt="" width="30" height="24" class="d-inline-block align-text-top">
+       ${c.author.name ?c.author.name:'No data available '}
+    </a> <span><i class="fa-regular fa-eye"></i> ${c.total_view?c.total_view:'No data available'}</span>
+    <div><button type="button" class="btn btn-primary">Primary</button></div>
+  </div>
+</nav>
+</div>
 
   </div>
 </div>`;
