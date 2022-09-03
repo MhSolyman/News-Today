@@ -2,13 +2,13 @@ const AllNewsCategory = () =>{
     fetch(`https://openapi.programming-hero.com/api/news/categories`)
 
         .then(res => res.json())
-        .then(data => a(data.data.news_category))
+        .then(data => AllNewsCategoryOne(data.data.news_category))
         .catch('error');
         
 }
 AllNewsCategory()
 
-const a =(b)=>{
+const AllNewsCategoryOne =(b)=>{
     let count=0;  
     let ul=document.getElementById("navbar-nav")
 for(const c of b)
